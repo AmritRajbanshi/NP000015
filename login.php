@@ -12,6 +12,9 @@
   <div style="min-height: 535px;">
     <div class="container pt-5">
       <h2 class="text-uppercase text-center">Login Panel</h2>
+      <?php if(isset($_GET['message']) && $_GET['message'] == 'failed'){ ?>
+        <h4 class="text-center alert alert-danger" >Invalid username or password</h4>
+      <?php } ?>
       <div class="d-flex flex-row justify-content-center py-3">
         <form action="cek_login.php" method="post">
           <div class="form-group">
@@ -94,17 +97,6 @@
         else{
           $('#passcheck').hide();
         }
-        // if((pwd_val.length < 8 ) || (pwd_val.length > 20 )){
-        //   $('#passcheck').show();
-        //   $('#passcheck').html("password must be of atleast 8 charachter");
-        //   $('#passcheck').focus();
-        //   $('#passcheck').css("color","red");
-        //   pass_err = false;
-        //   return false;
-        // }
-        // else{
-        //   $('#passcheck').hide();
-        // }
       }
 
       $('#submitbtn').click(function(){

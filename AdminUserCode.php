@@ -26,7 +26,7 @@
 					if($row["U_status"] == 'Active'){
 						$status = '<span class="badge badge-success"> Active </span>';
 					} else{
-						$status = '<span class="text-danger"> Inactive </span>';
+						$status = '<span class="badge badge-danger"> Inactive </span>';
 					}
 					$data .= '<tr>  
 						<td>'.$number.'</td>

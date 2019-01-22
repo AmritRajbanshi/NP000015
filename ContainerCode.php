@@ -20,10 +20,16 @@
 			if(mysqli_num_rows($result) > 0){
 				$number = 1;
 				while ($row = mysqli_fetch_array($result)) {
+					$status = '';
+					if($row["Con_status"] == 'Avai'){
+						$status = '<span class="badge badge-success"> Available </span>';
+					} else{
+						$status = '<span class="badge badge-danger"> Unavailable </span>';
+					}
 					$data .= '<tr>  
 						<td>'.$number.'</td>
 						<td>'.$row['Con_Name'].'</td>
-						<td>'.$row['Con_status'].'</td>
+						<td>'.$status.'</td>
 						<td>
 							<button onclick="GetContainerDetails('.$row['Con_ID'].')" class="btn btn-info">Edit</button>
 						</td>

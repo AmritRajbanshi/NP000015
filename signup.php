@@ -11,12 +11,13 @@
 <body>
   <div class="container pt-5">
     <h2 class="text-uppercase text-center">Signup Panel</h2>
+    <p class="error alert alert-danger" style="display:none"> All Field are required</p>
     <div class="d-flex flex-row justify-content-center py-3">
       <div>
         <input type="hidden" class="form-control" name="U_type" id="Utype" value="User">
         <div class="form-group">
           <label>Full Name</label>
-          <input type="text" class="form-control" name="U_fname" id="Ufname" placeholder="Enter Full name" required />
+          <input type="text" class="form-control" name="U_fname" id="Ufname" placeholder="Enter Full name">
         </div>
         <div id="Ufname_Err"></div>
         <div class="form-group">
@@ -112,20 +113,27 @@
       var Uname =  $("#Uname").val();
       var Utype =  $("#Utype").val();
       var Upwd =  $("#Upwd").val();
+      var cpwd = $("#cpwd").val();
 
-      $.ajax({
-        url:"signupCode.php",
-        type:'POST',
-        data:{
-          Ufname:Ufname,
-          Uname:Uname,
-          Utype:Utype,
-          Upwd:Upwd,
-        },
-        success:function(data, status){
-          //readRecords();
-        },
-      });
+      if(Ufname =='' || Uname =='' || Upwd =='' || cpwd == '' ){
+        $('.error').fadeOut(200).show();
+      }else{
+        $.ajax({
+          url:"signupCode.php",
+          type:'POST',
+          data:{
+            Ufname:Ufname,
+            Uname:Uname,
+            Utype:Utype,
+            Upwd:Upwd,
+          },
+          success:function(data, status){
+            //readRecords();
+            $('.error').fadeOut(200).hide();
+          },
+        });
+      }
+      return false;
     }
   </script>
 </body>
